@@ -1,0 +1,49 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+apply plugin:'war'
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.8.0'
+// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.8.0'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp
+	implementation group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-core
+	implementation group: 'org.apache.tiles', name: 'tiles-core', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-api
+	implementation group: 'org.apache.tiles', name: 'tiles-api', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet
+	implementation group: 'org.apache.tiles', name: 'tiles-servlet', version: '3.0.8'
+// https://mvnrepository.com/artifact/org.apache.tiles/tiles-el
+	implementation group: 'org.apache.tiles', name: 'tiles-el', version: '3.0.8'
+
+}
+
+test {
+	useJUnitPlatform()
+}
