@@ -10,18 +10,19 @@ public class MyExceptionHandler {
     @ExceptionHandler(value = NullPointerException.class)
     public String nullPointerHandler(NullPointerException exp, Model theModel) {
         theModel.addAttribute("err", exp.getMessage());
-        return "error2";
+        return "error";
     }
 
     @ExceptionHandler(value = RuntimeException.class)
     public String nullPointerHandler(RuntimeException exp, Model theModel) {
         theModel.addAttribute("err", exp.getMessage());
-        return "error2";
+        return "error";
     }
 
     @ExceptionHandler(value = Exception.class)
-    public String AnyOtherHandler() {
-        return "error2";
+    public String AnyOtherHandler(Exception exp,Model theModel) {
+        theModel.addAttribute("err", exp.getMessage());
+        return "error";
     }
 
 }
