@@ -9,7 +9,12 @@
 </head>
 <body font-size: 14px;>
     Opppssss....<br>${err}<br>
-<a href="/createemployee">Click here to create a new employee</a>
+    <br>
+    <br>
+<h4 align="center"><a href="/createemployee">Create Employee</a></h4>
+<br>
+<h4 align="center"><a href="/reademployee">List of all Employees</a></h4>
+
 </body>
 </html>
 

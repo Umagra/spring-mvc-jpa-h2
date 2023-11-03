@@ -56,8 +56,8 @@
         </tr>
     </table>
 </form:form>
+
+<h4 align="center"><a href="/reademployee">List of all Employees</a></h4>
 </body>
-<br>
-<br>
 <br>
 <br>
