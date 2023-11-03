@@ -22,13 +22,17 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @RequestMapping("/read-employee")
+    @RequestMapping("/dashboard")
+    public String firstPage() {
+        return "dashboard";
+    }
+    @RequestMapping("/reademployee")
     public String showReadEmployeePage(Model model) {
         model.addAttribute("employees", employeeService.findAll());
         return "reademployee";
     }
 
-    @RequestMapping("/create-employee")
+    @RequestMapping("/createemployee")
     public String showCreateEmployeePage(Model model) {
         List<String> managerList = employeeRepository.findAllManager();
         List<String> dept = Arrays.asList("Dept1","Dept 2","Dept 3","Dept 4");
@@ -38,13 +42,13 @@ public class EmployeeController {
         return "createemployee";
     }
 
-    @RequestMapping(value = "/create-employee", method = RequestMethod.POST)
+    @RequestMapping(value = "/createemployee", method = RequestMethod.POST)
     public String createEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.saveEmployee(employee);
-        return "redirect:/read-employee";
+        return "redirect:/reademployee";
     }
 
-    @RequestMapping(value = "/update-employee/{id}")
+    @RequestMapping(value = "/updateemployee/{id}")
     public String showUpdateEmployeePage(@PathVariable int id, Model model) {
         List<String> managerList = employeeRepository.findAllManager();
         List<String> dept = Arrays.asList("Dept 1","Dept 2","Dept 3","Dept 4");
@@ -55,16 +59,16 @@ public class EmployeeController {
         return "updateemployee";
     }
 
-    @RequestMapping(value = "/update-employee/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateemployee/{id}", method = RequestMethod.POST)
     public String updateEmployee(@PathVariable int id, @ModelAttribute("employee") Employee employee) {
         employeeService.updateEmployee(id, employee);
-        return "redirect:/read-employee";
+        return "redirect:/reademployee";
     }
 
-    @RequestMapping(value = "/delete-employee/{id}")
+    @RequestMapping(value = "/deleteemployee/{id}")
     public String deleteEmployee(@PathVariable int id) {
         employeeService.deleteById(id);
-        return "redirect:/read-employee";
+        return "redirect:/reademployee";
     }
 
 }
